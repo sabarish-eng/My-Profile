@@ -21,7 +21,7 @@ export default function Portfolio() {
   })
   const sendMessage = async () => {
     try {
-      const res = await fetch("http://localhost:1000/send", {
+      const res = await fetch("https://my-profile-five-sigma.vercel.app//send", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
