@@ -4,6 +4,7 @@ import { Menu, X, Github, ServerCog, Linkedin, Workflow, Mail, ExternalLink, Che
 import me from "./assets/yml.jpeg";
 import project1 from "./assets/nm.jpg";
 import project2 from "./assets/gs.png";
+import project3 from "./assets/sabari_Resume.pdf";
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -19,7 +20,8 @@ export default function Portfolio() {
     email: "",
     message: ""
   })
-  const sendMessage = async () => {
+  const sendMessage = async (e) => {
+    e.preventDefault();
     try {
       const res = await fetch("https://my-profile-five-sigma.vercel.app/send", {
         method: "POST",
@@ -27,7 +29,10 @@ export default function Portfolio() {
           "Content-Type": "application/json"
         },
         body: JSON.stringify(form)
-      })
+      });
+      if (res.ok) {
+        setForm({ name: "", email: "", message: "" });
+      }
     } catch (error) {
       console.error("Error sending message:", error);
     }
@@ -332,8 +337,9 @@ export default function Portfolio() {
               </p>
               <div className="flex gap-4 pt-4">
                 <button className="flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 hover:border-purple-500 transition-all duration-300">
+                  
                   <Download className="w-5 h-5" />
-                  Download CV
+                  <a href={project3} download className="text-white">Download CV</a>
                 </button>
               </div>
             </div>
@@ -485,7 +491,7 @@ export default function Portfolio() {
             <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl opacity-20 group-hover:opacity-30 blur-xl transition duration-500"></div>
 
             <div className="relative p-8 md:p-12 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10">
-              <form className="space-y-6" onSubmit={sendMessage}>
+              <form className="space-y-6" onSubmit={(e) => sendMessage(e)}>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-gray-400">Name</label>
