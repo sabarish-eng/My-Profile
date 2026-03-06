@@ -4,7 +4,7 @@ import { Menu, X, Github, ServerCog, Linkedin, Workflow, Mail, ExternalLink, Che
 import me from "./assets/yml.jpeg";
 import project1 from "./assets/nm.jpg";
 import project2 from "./assets/gs.png";
-import project3 from "./assets/Resume.pdf";
+import project3 from "./assets/Resumee.pdf";
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
